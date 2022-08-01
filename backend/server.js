@@ -10,9 +10,6 @@ dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("API is running");
-});
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
@@ -24,7 +21,6 @@ app.get("/api/config/paypal", (req, res) => {
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 if (process.env.NODE_ENV === 'production') {
-  console.log('if='+process.env.NODE_ENV+'.');
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) =>
