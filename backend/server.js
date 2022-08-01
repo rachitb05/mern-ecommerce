@@ -23,15 +23,15 @@ app.get("/api/config/paypal", (req, res) => {
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV.length());
 if (process.env.NODE_ENV === 'production') {
+  console.log('if='+process.env.NODE_ENV+'.');
   app.use(express.static(path.join(__dirname, "/frontend/build")));
 
   app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
   );
 } else {
+  console.log('else='+process.env.NODE_ENV+'.');
   app.get("/", (req, res) => {
     res.send("API is running....");
   });
