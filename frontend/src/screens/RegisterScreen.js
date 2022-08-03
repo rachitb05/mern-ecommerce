@@ -25,7 +25,6 @@ const RegisterScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(password, confirmPassword);
     if (password !== confirmPassword) setMessage("Passwords do not match");
     else {
       dispatch(register(name, email, password));
