@@ -60,7 +60,7 @@ const OrderScreen = () => {
       } else setSdkReady(true);
     }
   }, [order, id, dispatch, successPay, successDeliver, userInfo, navigate]);
-  const handleSucessPayment = (paymentResult) => {
+  const handleSuccessPayment = (paymentResult) => {
     dispatch(payOrder(id, paymentResult));
   };
   const handleDeliver = () => {
@@ -135,7 +135,7 @@ const OrderScreen = () => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} X {item.price} = ${item.qty * item.price}
+                          {item.qty} X {new Intl.NumberFormat('en-IN').format(item.price)} = ₹ {new Intl.NumberFormat('en-IN').format(item.qty * item.price)}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -154,25 +154,25 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>₹ {new Intl.NumberFormat('en-IN').format(order.itemsPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>₹ {new Intl.NumberFormat('en-IN').format(order.shippingPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>GST (15%)</Col>
+                  <Col>₹ {new Intl.NumberFormat('en-IN').format(order.taxPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>₹ {new Intl.NumberFormat('en-IN').format(order.totalPrice)}</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (
@@ -183,7 +183,7 @@ const OrderScreen = () => {
                   ) : (
                     <PayPalButton
                       amount={order.totalPrice}
-                      onSuccess={handleSucessPayment}
+                      onSuccess={handleSuccessPayment}
                     />
                   )}
                 </ListGroup.Item>

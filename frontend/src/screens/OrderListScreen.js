@@ -45,7 +45,7 @@ const OrderListScreen = () => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt}</td>
-                <td>{order.totalPrice}</td>
+                <td>₹ {new Intl.NumberFormat('en-IN').format(order.totalPrice)}</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
