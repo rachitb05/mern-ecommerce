@@ -4,9 +4,9 @@ import { LinkContainer } from "react-router-bootstrap";
 const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
     pages > 1 && (
-      <Pagination>
+      <Pagination className="d-flex justify-content-center gap-2" >
         {[...Array(pages).keys()].map((i) => (
-          <LinkContainer
+          <LinkContainer 
             to={
               !isAdmin
                 ? keyword

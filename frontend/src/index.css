@@ -42,3 +42,8 @@ h3 {
 .carousel a {
   margin: 0 auto;
 }
+.product:hover{
+transform: scale(1.1);
+transition: 0.3s;
+opacity:0.8;
+}
